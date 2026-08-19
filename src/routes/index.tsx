@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import bottleImg from "@/assets/sarkar-vesper-bottle.png";
 import lineupImg from "@/assets/sarkar-lineup.webp";
+import packagingImg from "@/assets/sarkar-packaging.webp";
 
 const TITLE = "VESPER (100ml) by Sarkar | Smoky Amber Parfum — ₹1,499";
 const DESCRIPTION =
@@ -45,6 +46,72 @@ const facts = [
   ["Wear", "Evenings · Dinners · Late drives"],
   ["Longevity", "8–10 hours"],
   ["Size", "100ml Parfum"],
+];
+
+const timeline = [
+  ["0–15 min", "Cold spice. Cardamom and plum, sharp enough to make someone look up."],
+  ["1–3 hrs", "Saffron leather settles in. This is the hour people ask what you're wearing."],
+  ["4–6 hrs", "Amber warmth, rose gone soft, oud starting to hum underneath."],
+  ["7–10 hrs", "A skin-close smoke trail. Still there when you get home."],
+];
+
+const offers = [
+  {
+    name: "The One Bottle",
+    price: "₹1,499",
+    was: "₹1,999",
+    line: "100ml Vesper parfum",
+    perks: ["Two 7ml freebies", "Free shipping across India", "Ships in 24–36 hrs"],
+    cta: "Add to cart",
+    featured: false,
+  },
+  {
+    name: "The Night Set",
+    price: "₹2,599",
+    was: "₹3,498",
+    line: "Vesper 100ml + Orion 100ml",
+    perks: [
+      "Save ₹899 on the pair",
+      "Four 7ml freebies",
+      "Day scent + night scent, covered",
+    ],
+    cta: "Get the set",
+    featured: true,
+  },
+  {
+    name: "The Try-First",
+    price: "₹299",
+    was: "",
+    line: "7ml Vesper travel spray",
+    perks: ["≈70 sprays", "₹299 back as credit on a 100ml", "Fits a jacket pocket"],
+    cta: "Try 7ml",
+    featured: false,
+  },
+];
+
+const quotes = [
+  ["“Wore it to a wedding. Three people, same question.”", "Rehan, Lucknow"],
+  ["“Smells expensive in a way that isn't loud about it.”", "Ananya, Pune"],
+  ["“Two sprays at 8pm, still on my collar at 6am.”", "Vikram, Delhi"],
+];
+
+const faqs = [
+  [
+    "Is this a new bottle?",
+    "No. Vesper ships in the same Sarkar chess-king flacon and the same box you already know. The idea is new, the packaging is untouched.",
+  ],
+  [
+    "How many sprays?",
+    "Two on the neck, one on the chest. It's a parfum concentration, so more is not better.",
+  ],
+  [
+    "Is it too heavy for Indian summers?",
+    "Wear it after sundown. In peak heat, one spray on clothing carries it well.",
+  ],
+  [
+    "Returns?",
+    "Unopened bottles, 7 days, no questions. The 7ml is yours to keep either way.",
+  ],
 ];
 
 function Index() {
@@ -106,6 +173,9 @@ function Index() {
                   Incl. of all taxes · Ships in 24–36 hrs
                 </span>
               </div>
+              <p className="mt-6 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                Launch batch · 300 bottles · 2 freebies per order
+              </p>
             </div>
             <div className="order-1 md:order-2">
               <img
@@ -116,6 +186,12 @@ function Index() {
                 className="mx-auto w-full max-w-sm"
               />
             </div>
+          </div>
+          <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-4 border-t border-border pt-8 text-xs uppercase tracking-[0.16em] text-muted-foreground sm:grid-cols-4">
+            <span>Parfum · 24% oil</span>
+            <span>Unisex</span>
+            <span>Alcohol-based, IFRA safe</span>
+            <span>Made in India</span>
           </div>
         </section>
 
@@ -157,58 +233,161 @@ function Index() {
           </div>
         </section>
 
-        {/* Product image area / shelf */}
-        <section className="border-t border-border px-5 py-16 sm:px-10 sm:py-24">
+        {/* How it wears */}
+        <section className="border-t border-border bg-stage px-5 py-16 sm:px-10 sm:py-24">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-3xl uppercase sm:text-4xl">On the same shelf</h2>
-            <p className="mt-3 max-w-lg text-sm text-muted-foreground">
-              Vesper keeps the Sarkar house bottle and packaging exactly as it is
-              — the chess-king flacon, the debossed SARKAR base, the black cap.
+            <p className="text-[10px] uppercase tracking-brand text-amber">
+              Ten hours
             </p>
-            <img
-              src={lineupImg}
-              alt="The Sarkar chess-piece parfum bottle line-up, packaging unchanged"
-              width={1600}
-              height={1600}
-              loading="lazy"
-              className="mt-8 w-full rounded-sm object-cover shadow-lux"
-            />
+            <h2 className="mt-3 max-w-xl text-3xl uppercase sm:text-4xl">
+              How Vesper reads an evening
+            </h2>
+            <ol className="mt-10 grid gap-px overflow-hidden rounded-sm border border-border bg-border md:grid-cols-4">
+              {timeline.map(([time, copy]) => (
+                <li key={time} className="bg-card p-6">
+                  <span className="font-display text-2xl text-amber">{time}</span>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {copy}
+                  </p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
-        {/* Buy */}
-        <section id="buy" className="border-t border-border bg-secondary px-5 py-16 sm:px-10 sm:py-24">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
-            <img
-              src={bottleImg}
-              alt="Sarkar VESPER 100ml parfum bottle"
-              width={1000}
-              height={1000}
-              loading="lazy"
-              className="mx-auto w-full max-w-xs"
-            />
-            <div>
-              <h2 className="text-3xl uppercase sm:text-4xl">Vesper · 100ml</h2>
-              <div className="mt-4 flex items-end gap-3">
-                <span className="font-display text-4xl">₹1,499</span>
-                <span className="pb-1 text-sm text-muted-foreground line-through">
-                  ₹1,999
-                </span>
-              </div>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Incl. of all taxes
+        {/* Product image area / shelf */}
+        <section className="border-t border-border px-5 py-16 sm:px-10 sm:py-24">
+          <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+            <div className="md:col-span-2">
+              <h2 className="text-3xl uppercase sm:text-4xl">On the same shelf</h2>
+              <p className="mt-3 max-w-lg text-sm text-muted-foreground">
+                Vesper keeps the Sarkar house bottle and packaging exactly as it
+                is — the chess-king flacon, the debossed SARKAR base, the black
+                cap. Nothing about the outside changed. Everything about the
+                inside did.
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-                <li>· Two 7ml freebies with every order</li>
-                <li>· Ships within 24–36 hours, free across India</li>
-                <li>· Launch batch — 300 bottles only</li>
-              </ul>
-              <a
-                href={STORE}
-                className="mt-8 inline-flex w-full items-center justify-center rounded-sm bg-primary px-8 py-4 text-xs uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-85 sm:w-auto"
-              >
-                Add to cart
-              </a>
+              <img
+                src={lineupImg}
+                alt="The Sarkar chess-piece parfum bottle line-up, packaging unchanged"
+                width={1600}
+                height={1600}
+                loading="lazy"
+                className="mt-8 w-full rounded-sm object-cover shadow-lux"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <img
+                src={packagingImg}
+                alt="Sarkar parfum in its original unchanged outer packaging"
+                width={1200}
+                height={1200}
+                loading="lazy"
+                className="w-full rounded-sm object-cover shadow-lux"
+              />
+              <div className="rounded-sm border border-border bg-card p-6">
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  If you already own a Sarkar, Vesper will look identical on your
+                  dresser. That's on purpose — the house look stays, the
+                  fragrance is the new part.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Quotes */}
+        <section className="border-t border-border px-5 py-14 sm:px-10">
+          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
+            {quotes.map(([q, who]) => (
+              <blockquote key={who} className="border-l-2 border-amber pl-4">
+                <p className="font-display text-lg leading-snug">{q}</p>
+                <cite className="mt-2 block text-[11px] uppercase not-italic tracking-[0.18em] text-muted-foreground">
+                  {who}
+                </cite>
+              </blockquote>
+            ))}
+          </div>
+        </section>
+
+        {/* Offer */}
+        <section
+          id="buy"
+          className="border-t border-border bg-secondary px-5 py-16 sm:px-10 sm:py-24"
+        >
+          <div className="mx-auto max-w-6xl">
+            <p className="text-[10px] uppercase tracking-brand text-amber">
+              Launch offer · ends when 300 bottles do
+            </p>
+            <h2 className="mt-3 text-3xl uppercase sm:text-4xl">
+              Pick your way in
+            </h2>
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              {offers.map((o) => (
+                <article
+                  key={o.name}
+                  className={`flex flex-col rounded-sm border p-6 ${
+                    o.featured
+                      ? "border-amber bg-card shadow-lux"
+                      : "border-border bg-card"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg uppercase">{o.name}</h3>
+                    {o.featured && (
+                      <span className="rounded-sm bg-gradient-amber px-2 py-1 text-[9px] uppercase tracking-[0.18em] text-amber-foreground">
+                        Best value
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground">{o.line}</p>
+                  <div className="mt-5 flex items-end gap-2">
+                    <span className="font-display text-4xl">{o.price}</span>
+                    {o.was && (
+                      <span className="pb-1 text-sm text-muted-foreground line-through">
+                        {o.was}
+                      </span>
+                    )}
+                  </div>
+                  <ul className="mt-5 flex-1 space-y-2 text-sm text-muted-foreground">
+                    {o.perks.map((p) => (
+                      <li key={p}>· {p}</li>
+                    ))}
+                  </ul>
+                  <a
+                    href={STORE}
+                    className={`mt-7 inline-flex w-full items-center justify-center rounded-sm px-6 py-4 text-xs uppercase tracking-[0.2em] transition-opacity hover:opacity-85 ${
+                      o.featured
+                        ? "bg-gradient-amber text-amber-foreground"
+                        : "bg-primary text-primary-foreground"
+                    }`}
+                  >
+                    {o.cta}
+                  </a>
+                </article>
+              ))}
+            </div>
+            <p className="mt-6 text-xs text-muted-foreground">
+              Incl. of all taxes · Free shipping across India · 7-day returns on
+              unopened bottles
+            </p>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="border-t border-border px-5 py-16 sm:px-10 sm:py-24">
+          <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1fr_1.4fr]">
+            <h2 className="text-3xl uppercase sm:text-4xl">Before you buy</h2>
+            <div className="divide-y divide-border border-y border-border">
+              {faqs.map(([q, a]) => (
+                <details key={q} className="group py-4">
+                  <summary className="cursor-pointer list-none text-sm uppercase tracking-[0.12em]">
+                    {q}
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {a}
+                  </p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
