@@ -12,6 +12,10 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+const FONTS_HREF =
+  "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Karla:wght@300;400;500&display=swap";
+
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
