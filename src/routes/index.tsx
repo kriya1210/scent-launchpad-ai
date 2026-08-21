@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import bottleImg from "@/assets/sarkar-vesper-bottle.png";
+import bottleImg from "@/assets/sarkar-vesper-bottle.webp";
 import lineupImg from "@/assets/sarkar-lineup.webp";
 import packagingImg from "@/assets/sarkar-packaging.webp";
 
