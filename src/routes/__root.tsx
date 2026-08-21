@@ -95,15 +95,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
-        // Non-blocking font load: fetched as print stylesheet, promoted to all on load.
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Karla:wght@300;400;500&display=swap",
-        media: "print",
-        // @ts-expect-error - valid DOM attribute, forwarded to the <link> element
-        onLoad: "this.media='all'",
+        // Fonts load without blocking first paint (promoted to a stylesheet by the script below).
+        rel: "preload",
+        as: "style",
+        href: FONTS_HREF,
       },
-
     ],
+    scripts: [
+      {
+        children: `(function(){var l=document.createElement("link");l.rel="stylesheet";l.href=${JSON.stringify(
+          FONTS_HREF,
+        )};document.head.appendChild(l);})();`,
+      },
+    ],
+
   }),
   shellComponent: RootShell,
   component: RootComponent,
