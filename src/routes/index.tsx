@@ -17,7 +17,12 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      // LCP image — fetch it as early as possible.
+      { rel: "preload", as: "image", href: bottleImg, fetchpriority: "high" },
+    ],
   }),
+
   component: Index,
 });
 
