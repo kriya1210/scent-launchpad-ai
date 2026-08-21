@@ -186,10 +186,14 @@ function Index() {
               <img
                 src={bottleImg}
                 alt="Sarkar VESPER 100ml parfum in the signature amber chess-king bottle"
-                width={1000}
-                height={1000}
+                width={900}
+                height={900}
+                decoding="async"
+                fetchPriority="high"
+                sizes="(max-width: 768px) 90vw, 420px"
                 className="mx-auto w-full max-w-sm"
               />
+
             </div>
           </div>
           <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-4 border-t border-border pt-8 text-xs uppercase tracking-[0.16em] text-muted-foreground sm:grid-cols-4">
