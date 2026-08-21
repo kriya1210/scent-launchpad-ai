@@ -278,8 +278,8 @@ function Index() {
               <img
                 src={lineupImg}
                 alt="The Sarkar chess-piece parfum bottle line-up, packaging unchanged"
-                width={1600}
-                height={1600}
+                width={1100}
+                height={1100}
                 loading="lazy"
                 className="mt-8 w-full rounded-sm object-cover shadow-lux"
               />
@@ -288,8 +288,8 @@ function Index() {
               <img
                 src={packagingImg}
                 alt="Sarkar parfum in its original unchanged outer packaging"
-                width={1200}
-                height={1200}
+                width={1100}
+                height={1100}
                 loading="lazy"
                 className="w-full rounded-sm object-cover shadow-lux"
               />
