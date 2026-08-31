@@ -186,11 +186,10 @@ function Index() {
               <img
                 src={bottleImg}
                 alt="Sarkar VESPER 100ml parfum in the signature amber chess-king bottle"
-                width={900}
-                height={900}
+                width={640}
+                height={640}
                 decoding="async"
                 fetchPriority="high"
-                sizes="(max-width: 768px) 90vw, 420px"
                 className="mx-auto w-full max-w-sm"
               />
 
