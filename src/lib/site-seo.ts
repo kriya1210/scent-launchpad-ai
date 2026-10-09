@@ -47,6 +47,8 @@ export const conceptFaqs = [
   },
 ];
 
+export const DATE_PUBLISHED = "2026-10-09";
+
 export const pageSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -66,15 +68,34 @@ export const pageSchema = {
       description: PAGE_DESCRIPTION,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       mainEntity: { "@id": `${SITE_URL}/#concept` },
+      author: { "@id": `${SITE_URL}/#author` },
+      datePublished: DATE_PUBLISHED,
+      dateModified: DATE_PUBLISHED,
       inLanguage: "en",
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#author`,
+      name: "Kriya Mehta",
+      description: "Creator of the Vesper fragrance concept for Sarkar Perfume — an independent creative exercise, not an official Sarkar launch.",
+      knowsAbout: ["fragrance design", "perfume notes", "brand concept development"],
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.sarkar.store/#organization",
+      name: "Sarkar Perfume",
+      url: "https://www.sarkar.store/",
+      description: "Indian perfume house whose existing chess-king bottle and packaging the Vesper concept retains unchanged.",
     },
     {
       "@type": "CreativeWork",
       "@id": `${SITE_URL}/#concept`,
       name: "Vesper fragrance concept",
       description: "An imagined smoky amber parfum and launch offer, retaining Sarkar Perfume’s existing bottle and packaging. Not an available retail product.",
-      author: { "@type": "Person", name: "Kriya Mehta" },
-      about: { "@type": "Brand", name: "Sarkar Perfume", url: "https://www.sarkar.store/" },
+      author: { "@id": `${SITE_URL}/#author` },
+      about: { "@id": "https://www.sarkar.store/#organization" },
+      datePublished: DATE_PUBLISHED,
+      inLanguage: "en",
     },
     {
       "@type": "FAQPage",
