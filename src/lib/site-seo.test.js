@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { pageSchema, SITE_URL } from "./site-seo";
+import { pageSchema, SITE_URL } from "./site-seo.ts";
 
 describe("concept search identity", () => {
   test("uses the published website, not the editor, as canonical identity", () => {
