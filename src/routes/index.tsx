@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "canonical", href: `${SITE_URL}/` },
       // LCP image — fetch it as early as possible.
-      { rel: "preload", as: "image", href: bottleImg, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: bottleImg, fetchPriority: "high" },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(pageSchema) }],
   }),
