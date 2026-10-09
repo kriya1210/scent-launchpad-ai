@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import bottleImg from "@/assets/sarkar-vesper-bottle.webp";
 import lineupImg from "@/assets/sarkar-lineup.webp";
 import packagingImg from "@/assets/sarkar-packaging.webp";
-import { SITE_URL, PAGE_TITLE, PAGE_DESCRIPTION, pageSchema } from "@/lib/site-seo";
+import { SITE_URL, PAGE_TITLE, PAGE_DESCRIPTION, pageSchema, conceptFaqs } from "@/lib/site-seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -95,33 +95,6 @@ const offers = [
     cta: "Try 7ml",
     featured: false,
   },
-];
-
-const faqs = [
-  [
-    "What is Vesper?",
-    "Vesper is Kriya Mehta’s imagined 100ml smoky amber fragrance for Sarkar Perfume. The concept combines cardamom, saffron leather and oud while keeping the original Sarkar bottle and packaging unchanged.",
-  ],
-  [
-    "Can I buy Vesper?",
-    "Vesper is a creative concept, not a confirmed retail product. The prices and launch offers below are proposals. Visit the official Sarkar store for available fragrances and current terms.",
-  ],
-  [
-    "Is this a new bottle?",
-    "No. Vesper ships in the same Sarkar chess-king flacon and the same box you already know. The idea is new, the packaging is untouched.",
-  ],
-  [
-    "How many sprays?",
-    "Two on the neck, one on the chest. It's a parfum concentration, so more is not better.",
-  ],
-  [
-    "Is it too heavy for Indian summers?",
-    "Wear it after sundown. In peak heat, one spray on clothing carries it well.",
-  ],
-  [
-    "Returns?",
-    "Unopened bottles, 7 days, no questions. The 7ml is yours to keep either way.",
-  ],
 ];
 
 function Index() {
@@ -385,17 +358,24 @@ function Index() {
         </section>
 
         {/* FAQ */}
-        <section className="border-t border-border px-5 py-16 sm:px-10 sm:py-24">
+        <section id="faq" aria-labelledby="faq-heading" className="scroll-mt-24 border-t border-border px-5 py-16 sm:px-10 sm:py-24">
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1fr_1.4fr]">
-            <h2 className="text-3xl uppercase sm:text-4xl">Before you buy</h2>
+            <div>
+              <p className="text-[10px] uppercase tracking-brand text-amber">Questions & answers</p>
+              <h2 id="faq-heading" className="mt-3 text-3xl uppercase sm:text-4xl">Vesper, explained</h2>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">The fragrance idea, the unchanged bottle and what is—and isn’t—part of an official launch.</p>
+              <a href={STORE} className="mt-5 inline-block text-sm underline underline-offset-4">Official Sarkar Perfume store ↗</a>
+            </div>
             <div className="divide-y divide-border border-y border-border">
-              {faqs.map(([q, a]) => (
-                <details key={q} className="group py-4">
-                  <summary className="cursor-pointer list-none text-sm uppercase tracking-[0.12em]">
-                    {q}
+              {conceptFaqs.map(({ question, answer }, index) => (
+                <details key={question} open={index === 0} className="group py-5">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring [&::-webkit-details-marker]:hidden">
+                    <span>{question}</span>
+                    <span aria-hidden="true" className="shrink-0 text-lg leading-5 text-amber group-open:hidden">+</span>
+                    <span aria-hidden="true" className="hidden shrink-0 text-lg leading-5 text-amber group-open:inline">−</span>
                   </summary>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {a}
+                    {answer}
                   </p>
                 </details>
               ))}

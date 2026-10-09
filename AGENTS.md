@@ -12,3 +12,4 @@
 - Keep canonical identity and structured data in the browser-safe SEO module so the visible concept and crawler metadata share one identity.
 - Prerender only the explicitly listed public, visitor-independent landing page; disable automatic discovery to keep future personalized pages private.
 - Maintain a static sitemap and llms.txt for the public page; update their URLs together with the canonical identity if the published domain changes.
+- Keep visible concept FAQs and FAQPage structured data in the browser-safe SEO module as a single source to prevent conflicting answers.

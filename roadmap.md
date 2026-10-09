@@ -1,4 +1,5 @@
 # Search-readiness improvements
+- [x] Expand concept FAQs with direct, source-aware answers and matching FAQPage structured data.
 - [x] Add canonical metadata, truthful structured data and crawlable discovery files.
 - [x] Clarify concept authorship and distinguish imagined claims from store information.
 - [x] Enable static HTML configuration and verify server-rendered content; generated production files require the publish build.
