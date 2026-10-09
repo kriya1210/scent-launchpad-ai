@@ -2,25 +2,28 @@ import { createFileRoute } from "@tanstack/react-router";
 import bottleImg from "@/assets/sarkar-vesper-bottle.webp";
 import lineupImg from "@/assets/sarkar-lineup.webp";
 import packagingImg from "@/assets/sarkar-packaging.webp";
-
-const TITLE = "VESPER (100ml) by Sarkar | Smoky Amber Parfum — ₹1,499";
-const DESCRIPTION =
-  "VESPER by Sarkar: a smoky amber parfum of cardamom, saffron leather and oud. 100ml parfum, ₹1,499, ships in 24-36 hours with two 7ml freebies.";
+import { SITE_URL, PAGE_TITLE, PAGE_DESCRIPTION, pageSchema } from "@/lib/site-seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "product" },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESCRIPTION },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:site_name", content: "Vesper — Sarkar Fragrance Concept" },
+      { name: "author", content: "Kriya Mehta" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "canonical", href: `${SITE_URL}/` },
       // LCP image — fetch it as early as possible.
       { rel: "preload", as: "image", href: bottleImg, fetchpriority: "high" },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(pageSchema) }],
   }),
 
   component: Index,
@@ -94,13 +97,15 @@ const offers = [
   },
 ];
 
-const quotes = [
-  ["“Wore it to a wedding. Three people, same question.”", "Rehan, Lucknow"],
-  ["“Smells expensive in a way that isn't loud about it.”", "Ananya, Pune"],
-  ["“Two sprays at 8pm, still on my collar at 6am.”", "Vikram, Delhi"],
-];
-
 const faqs = [
+  [
+    "What is Vesper?",
+    "Vesper is Kriya Mehta’s imagined 100ml smoky amber fragrance for Sarkar Perfume. The concept combines cardamom, saffron leather and oud while keeping the original Sarkar bottle and packaging unchanged.",
+  ],
+  [
+    "Can I buy Vesper?",
+    "Vesper is a creative concept, not a confirmed retail product. The prices and launch offers below are proposals. Visit the official Sarkar store for available fragrances and current terms.",
+  ],
   [
     "Is this a new bottle?",
     "No. Vesper ships in the same Sarkar chess-king flacon and the same box you already know. The idea is new, the packaging is untouched.",
@@ -166,6 +171,10 @@ function Index() {
                 Built for the version of you that shows up after work is done —
                 unhurried, warm, impossible to place. Same Sarkar bottle. A new
                 mood inside it.
+              </p>
+              <p className="mt-4 max-w-md text-xs leading-relaxed text-muted-foreground">
+                A fragrance concept by Kriya Mehta. Original Sarkar packaging;
+                imagined fragrance and launch offer. Not an official product launch.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
@@ -267,12 +276,15 @@ function Index() {
         <section className="border-t border-border px-5 py-16 sm:px-10 sm:py-24">
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
             <div className="md:col-span-2">
-              <h2 className="text-3xl uppercase sm:text-4xl">On the same shelf</h2>
+              <h2 className="text-3xl uppercase sm:text-4xl">Original Sarkar packaging</h2>
               <p className="mt-3 max-w-lg text-sm text-muted-foreground">
                 Vesper keeps the Sarkar house bottle and packaging exactly as it
                 is — the chess-king flacon, the debossed SARKAR base, the black
                 cap. Nothing about the outside changed. Everything about the
                 inside did.
+              </p>
+              <p className="mt-3 text-xs text-muted-foreground">
+                Bottle and packaging imagery from the <a href={STORE} className="underline underline-offset-4">official Sarkar Perfume store</a>.
               </p>
               <img
                 src={lineupImg}
@@ -303,20 +315,6 @@ function Index() {
           </div>
         </section>
 
-        {/* Quotes */}
-        <section className="border-t border-border px-5 py-14 sm:px-10">
-          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
-            {quotes.map(([q, who]) => (
-              <blockquote key={who} className="border-l-2 border-amber pl-4">
-                <p className="font-display text-lg leading-snug">{q}</p>
-                <cite className="mt-2 block text-[11px] uppercase not-italic tracking-[0.18em] text-muted-foreground">
-                  {who}
-                </cite>
-              </blockquote>
-            ))}
-          </div>
-        </section>
-
         {/* Offer */}
         <section
           id="buy"
@@ -324,11 +322,16 @@ function Index() {
         >
           <div className="mx-auto max-w-6xl">
             <p className="text-[10px] uppercase tracking-brand text-amber">
-              Launch offer · ends when 300 bottles do
+              Proposed launch offer · 300-bottle concept batch
             </p>
             <h2 className="mt-3 text-3xl uppercase sm:text-4xl">
               Pick your way in
             </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              These prices, bundles, performance claims and delivery terms are
+              part of the imagined launch, not verified store offers. Links open
+              the official Sarkar store; they do not add Vesper to a cart.
+            </p>
             <div className="mt-10 grid gap-4 md:grid-cols-3">
               {offers.map((o) => (
                 <article
@@ -369,7 +372,7 @@ function Index() {
                         : "bg-primary text-primary-foreground"
                     }`}
                   >
-                    {o.cta}
+                    Visit Sarkar store
                   </a>
                 </article>
               ))}
@@ -413,11 +416,11 @@ function Index() {
             <a href="#buy" className="hover:text-foreground">
               Shop Vesper
             </a>
-            <a href="mailto:hello@sarkar.store" className="hover:text-foreground">
-              Contact
+            <a href="https://www.sarkar.store/products/orion" className="hover:text-foreground">
+              Official Orion product
             </a>
           </nav>
-          <span>© {new Date().getFullYear()} Sarkar Perfume. Vesper is a concept fragrance.</span>
+          <span>Concept by Kriya Mehta · Not an official Sarkar launch.</span>
         </div>
       </footer>
     </div>
